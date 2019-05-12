@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+ 
+  <head>
+    <link rel="stylesheet" href="bootstrap.min.css"/>
+    <script src="angular.min.js"></script>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+
+  <body ng-app="todo" ng-controller="TodoCtrl">
+    <div class="container">
+      <h1>Todo List</h1>
+      <ul class="list-unstyled">
+        <li ng-repeat="todo in todos | filter:statusFilter">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <div class="input-group-text">
+                <input type="checkbox" ng-model="todo.completed" />
+              </div>
+            </div>
+            <input type="text" class="form-control" ng-model="todo.title" />
+            <span class="input-group-btn">
+              <button class="btn btn-danger" type="button" ng-click="remove(todo)">Delete</button>
+            </span>
+          </div>
+          <date>{{todo.createdAt| date:'yyyy MM dd'}}</date>
+        </li>
+      </ul>
+      
+      <button class="btn btn-primary" ng-click="statusFilter={completed:true}">Complete</button>
+      <button class="btn btn-primary" ng-click="statusFilter={completed:false}">Active</button>
+      <button class="btn btn-primary" ng-click="statusFilter={}">All</button>
+      
+    </div>
+  </body>
+
+</html>
