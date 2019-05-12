@@ -2,69 +2,37 @@
 <html>
  
   <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" href="css/bootstrap.min.css"/>
     <script src="js/angular.min.js"></script>
     <link rel="stylesheet" href="css/style.css" />
-    <script src="js/script.js"></script>
+    
+    <!-- <script src="js/script.js"></script> -->
+    
+    <!-- Î™®ÎìàÌôî  -->
+    <script src="js/app.js"></script>
+    <script src="js/controllers.js"></script>
     <script src="js/directive.js"></script>
+    <script src="js/services.js"></script>
+    
   </head>
 
   <body ng-app="todo" ng-controller="TodoCtrl">
     <div class="container">
-      <!-- <h1>Todo List</h1> -->
-      
-      <!-- todo-title : µ∑∫∆º∫Í -->
       <todo-title></todo-title>
       
-      <!-- formø° µ•¿Ã≈Õ πŸ¿Œµ˘ Ω√ø°¥¬ ng-model ªÁøÎ -->
-      <!-- name¿ª ¡÷∏È $scope ∫Øºˆø° todoForm ¿Ã∂Û¥¬ ∫Øºˆ∞° ª˝º∫µ«¥¬ ∞Õ¿Ã¥Ÿ -->
+      <!-- formÏóê Îç∞Ïù¥ÌÑ∞ Î∞îÏù∏Îî© ÏãúÏóêÎäî ng-model ÏÇ¨Ïö© -->
+      <!-- nameÏùÑ Ï£ºÎ©¥ $scope Î≥ÄÏàòÏóê todoForm Ïù¥ÎùºÎäî Î≥ÄÏàòÍ∞Ä ÏÉùÏÑ±ÎêòÎäî Í≤ÉÏù¥Îã§ -->
       
-      <form name="todoForm" ng-submit="add(newTodoTitle)">
-      	<div class="input-group">
-      		<input type="text" class="form-control" minlength="3" placeholder="ªı∑ŒøÓ todo∏¶ ¿‘∑¬«œººø‰." ng-model="newTodoTitle">
-      		<span class="input-group-btn">
-      			<button class="btn btn-success" type="submit">√ﬂ∞°</button>
-      		</span>
-      	</div>
-      	
-      	<!-- ng-show:true ¿œ∂ß∏∏ √‚∑¬
-      		$dirty : ¿Œ«≤∆˚ø° ¿‘∑¬¿Ã µ«æÓ¿÷¥Ÿ.
-      		$invalid : ¡∂∞«ø° ∫“∏∏¡∑ «—¥Ÿ.
-      	 -->
-      	<div ng-show="todoForm.$dirty && todoForm.$invalid">
-	      	<div class="alert alert-primary" role="alert">
-			  3±€¿⁄ ¿ÃªÛ ¿‘∑¬«ÿ¡÷ººø‰.
-			</div>
-      	</div>
-      	
-      </form>
+      <todo-form></todo-form>
       
-      <ul class="list-unstyled"><!-- $scope∑Œ ¡ˆ¡§«ÿ µŒæ˙¥¯ todos πËø≠∫Øºˆ ªÁøÎ -->
+      <ul class="list-unstyled"><!-- $scopeÎ°ú ÏßÄÏ†ïÌï¥ ÎëêÏóàÎçò todos Î∞∞Ïó¥Î≥ÄÏàò ÏÇ¨Ïö© -->
         <li ng-repeat="todo in todos | filter:statusFilter">
-          <!-- <div class="input-group">
-            <div class="input-group-prepend">
-              <div class="input-group-text">
-                <input type="checkbox" ng-model="todo.completed" />
-              </div>
-            </div>
-            <input type="text" class="form-control" ng-model="todo.title" />
-            <span class="input-group-btn">
-              <button class="btn btn-danger" type="button" ng-click="remove(todo)">Delete</button>
-            </span>
-          </div>
-          <date>{{todo.createdAt| date:'yyyy MM dd'}}</date> -->
-          
-          
-           <!-- ¿ß¿« πÊΩƒ¿ª µ∑∫∆º∫Í∑Œ ±∏«ˆ -->
-          <todo-item>
-          
-          </todo-item>
+          <todo-item></todo-item>
         </li>
       </ul>
       
-      <button class="btn btn-primary" ng-click="statusFilter={completed:true}">Complete</button>
-      <button class="btn btn-primary" ng-click="statusFilter={completed:false}">Active</button>
-      <button class="btn btn-primary" ng-click="statusFilter={}">All</button>
+      <todo-filters></todo-filters>
       
     </div>
   </body>

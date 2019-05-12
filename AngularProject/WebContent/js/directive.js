@@ -14,12 +14,27 @@ return {
 
 angular.module('todo').directive('todoItem',function(){
 	return {
-	templateUrl:'todoItem.tpl.html'
+	templateUrl:'tpl/todoItem.tpl.html'
+	};
+	  
+	  
+});
+
+angular.module('todo').directive('todoFilters',function(){
+	return {
+	templateUrl:'tpl/todoFilters.tpl.html'
 	};
 	  
 	  
 });
 
 
+angular.module('todo').directive('todoForm',function(){
+	return {
+	templateUrl:'tpl/todoForm.tpl.html'
+	};
+	  
+	  
+});
 
 /******************** Directive  End *****************/
